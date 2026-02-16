@@ -142,6 +142,17 @@ function handle_run_mode_search() {	## Not yet functional!
 	run_curl "${curl_args[@]}"
 	#| jq -r 'map({(.ID): {VissibleName,Type}}) | add'
 }
+function handle_run_mode_get_log() {
+	local output_file_params=
+	if [[ "$1" ]]; then
+		output_file_params="--output $1"
+	fi
+	local -a curl_args=(
+		${output_file_params-'--remote-name --remote-header-name'}
+		"$Host/log.txt"
+	)
+	run_curl "${curl_args[@]}"
+}
 
 
 case ${1,,} in
@@ -149,6 +160,7 @@ case ${1,,} in
 	get)     shift; handle_run_mode_get     "$@" ;;
 	put)     shift; handle_run_mode_put     "$@" ;;
 	search)  shift; handle_run_mode_search  "$@" ;;
+	log)     shift; handle_run_mode_get_log "$@" ;;
 	*)
 		echo "Invalid run mode: \"$1\"" >&2
 		exit
