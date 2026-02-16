@@ -155,14 +155,26 @@ function handle_run_mode_get_log() {
 	)
 	run_curl "${curl_args[@]}"
 }
+function handle_run_mode_get_thumbnail() {
+	local target_guid="$1"
+	local output_file_params
+	output_file_params="--output ${2-$1.png}"
+	local Thumbnail="$Host/thumbnail"
+	local -a curl_args=(
+		$output_file_params
+		"$Thumbnail/$target_guid"
+	)
+	run_curl "${curl_args[@]}"
+}
 
 
 case ${1,,} in
-	list)    shift; handle_run_mode_list    "$@" ;;
-	get)     shift; handle_run_mode_get     "$@" ;;
-	put)     shift; handle_run_mode_put     "$@" ;;
-	search)  shift; handle_run_mode_search  "$@" ;;
-	log)     shift; handle_run_mode_get_log "$@" ;;
+	list)      shift; handle_run_mode_list          "$@" ;;
+	get)       shift; handle_run_mode_get           "$@" ;;
+	put)       shift; handle_run_mode_put           "$@" ;;
+	search)    shift; handle_run_mode_search        "$@" ;;
+	log)       shift; handle_run_mode_get_log       "$@" ;;
+	thumbnail) shift; handle_run_mode_get_thumbnail "$@" ;;
 	*)
 		echo "Invalid run mode: \"$1\"" >&2
 		exit
