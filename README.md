@@ -46,3 +46,8 @@ For this script to work, you will need:
 
 I've described the requirements for and process of connecting to Remarkable devices from a Linux host [here](https://wiki.gentoo.org/wiki/User:Penguin-Guru/Remarkable). Note that distribution kernels probably already support the necessary drivers and do not need to be rebuilt.
 
+
+### Attribution:
+
+My understanding of the A.P.I. as applied in this script is based almost entirely on [this](https://remarkable.guide/tech/usb-web-interface.html#api) web page and digging through the web interface's JavaScript. I have since read through several other open-source projects and blog articles examining the A.P.I., but I did not discover any additional information about end-points independent of authentication.
+
