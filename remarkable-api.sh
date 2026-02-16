@@ -13,7 +13,7 @@ function run_curl() {
 	fi
 }
 
-function handle_run_mode_list() {
+function run_mode_list() {
 	## Note: When an invalid folder guid is specified, the A.P.I. will return results for the document root.
 	local parent_folder_guid="$1"
 
@@ -27,7 +27,7 @@ function handle_run_mode_list() {
 	## 	"Vissible" is not a typo, despite the metadata file key displaying as "visible"...
 	## 	This particular capitalisation is required, despite not matching the capitalisation used in the metadata files.
 }
-function handle_run_mode_get() {
+function run_mode_get() {
 	local target_guid="$1"
 	local target_file_extension=	## $2
 
@@ -65,7 +65,7 @@ function handle_run_mode_get() {
 	)
 	run_curl "${curl_args[@]}"
 }
-function handle_run_mode_put() {
+function run_mode_put() {
 	## Note: files can only be uploaded to the most recently listed folder.
 	local target_file="$1"
 	if [[ ! -f "$target_file" ]]; then
@@ -105,12 +105,12 @@ function handle_run_mode_put() {
 	)
 	run_curl "${curl_args[@]}"
 }
-#function handle_run_mode_rename() {
+#function run_mode_rename() {
 #function make_folder() {
 #	## https://github.com/splitbrain/ReMarkableAPI/blob/3d6cbe9ac660e50d78f9e5d68a30de9d42981d6d/src/RemarkableAPI.php#L182
 #}
-#function handle_run_mode_move() {
-#function handle_run_mode_delete() {	## Not yet functional!
+#function run_mode_move() {
+#function run_mode_delete() {	## Not yet functional!
 #	## https://github.com/splitbrain/ReMarkableAPI/blob/3d6cbe9ac660e50d78f9e5d68a30de9d42981d6d/src/RemarkableAPI.php#L306
 #	## Implementation below seems to list the document root folder.
 #	## 	Posting to Search="$Host/documents/search" in function below produced the same result.
@@ -124,7 +124,7 @@ function handle_run_mode_put() {
 #	)
 #	run_curl "${curl_args[@]}"
 #}
-function handle_run_mode_search() {	## Not yet functional!
+function run_mode_search() {	## Not yet functional!
 	## https://remarkable.guide/tech/usb-web-interface.html#post-http-10-11-99-1-search-keyword
 	## Implementation below returns an empty array.
 	local search_term="$1"
@@ -142,7 +142,7 @@ function handle_run_mode_search() {	## Not yet functional!
 	run_curl "${curl_args[@]}"
 	#| jq -r 'map({(.ID): {VissibleName,Type}}) | add'
 }
-function handle_run_mode_get_log() {
+function run_mode_get_log() {
 	local output_file_params
 	if [[ "$1" ]]; then
 		output_file_params="--output $1"
@@ -155,7 +155,7 @@ function handle_run_mode_get_log() {
 	)
 	run_curl "${curl_args[@]}"
 }
-function handle_run_mode_get_thumbnail() {
+function run_mode_get_thumbnail() {
 	local target_guid="$1"
 	local output_file_params
 	output_file_params="--output ${2-$1.png}"
@@ -169,12 +169,12 @@ function handle_run_mode_get_thumbnail() {
 
 
 case ${1,,} in
-	list)      shift; handle_run_mode_list          "$@" ;;
-	get)       shift; handle_run_mode_get           "$@" ;;
-	put)       shift; handle_run_mode_put           "$@" ;;
-	search)    shift; handle_run_mode_search        "$@" ;;
-	log)       shift; handle_run_mode_get_log       "$@" ;;
-	thumbnail) shift; handle_run_mode_get_thumbnail "$@" ;;
+	list)      shift; run_mode_list          "$@" ;;
+	get)       shift; run_mode_get           "$@" ;;
+	put)       shift; run_mode_put           "$@" ;;
+	search)    shift; run_mode_search        "$@" ;;
+	log)       shift; run_mode_get_log       "$@" ;;
+	thumbnail) shift; run_mode_get_thumbnail "$@" ;;
 	*)
 		echo "Invalid run mode: \"$1\"" >&2
 		exit
