@@ -176,7 +176,20 @@ case ${1,,} in
 	log)       shift; run_mode_get_log       "$@" ;;
 	thumbnail) shift; run_mode_get_thumbnail "$@" ;;
 	*)
-		echo "Invalid run mode: \"$1\"" >&2
+		if (($#)); then echo "Invalid run mode: \"$1\"" >&2; fi
+		echo -e 'Options:\n' \
+			'\tlist [folder GUID]\n' \
+				'\t\tList objects in document root or specified folder.\n' \
+			'\tget <document GUID> <desired file extension>\n' \
+				'\t\tDownload document from tablet to host.\n' \
+			'\tput <path to file>\n' \
+				'\t\tUpload document from host to tablet.\n' \
+			'\tsearch <term>\n' \
+				'\t\tSearch for object on tablet? This does not seem to work.\n' \
+			'\tlog [output file]\n' \
+				'\t\tDownload log file from tablet.\n' \
+			'\tthumbnail <document GUID>\n' \
+				'\t\tDownload thumbnail image associated with document.\n'
 		exit
 esac
 
