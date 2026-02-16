@@ -1,12 +1,12 @@
 
-A simple Bash script to interact with Remarkable devices' local A.P.I. via C.L.I.
+## A simple Bash script to interact with Remarkable devices' local A.P.I. via C.L.I.
 
-This script is pretty basic and I don't expect to maintain it. I've already written a more robust one that does not use their A.P.I. With that said, if anyone wants to use their A.P.I. via C.L.I., this script should be a good place to start. I tried several others before writing it and none of them worked for me. Most are archived and unmaintained.
+This script is pretty basic and I don't expect to maintain it. I've already written a more robust one that does not use their A.P.I. With that said, if anyone does want to use their A.P.I., this script should be a good place to start. I tried several others before writing it and none of them worked for me. Most are archived and unmaintained.
+
+I am not aware of any models or software versions this does not work with, but there may well be some. If you know of any, feel free to submit a pull request or file an issue about it.
 
 So far, known to work with:
 - Remarkable Paper Pro (3.24.0.149)
-
-I am not aware of any models or software versions this does not work with, but there may well be some. If you know of any, feel free to submit a pull request or file an issue about it.
 
 ### Functionality:
 
@@ -28,7 +28,7 @@ Some basic functionalities are not supported because I haven't figured out how o
 - Searching for objects (supposedly possible without auth, or at least used to be somewhat possible).
 
 I have also not developed the functions that do work much, since I decided to write a different script instead. If anyone actually wants to use this, I may be able to make the U.X. a bit more comfortable. File feature requests as issues.
-- Specifying objects by visible name rathern than G.U.I.D.
+- Specifying objects by visible name rather than than G.U.I.D.
 - Recursive operations on folders.
 - Support for iterative processing of multiple objects per invocation.
 
