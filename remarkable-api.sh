@@ -143,12 +143,14 @@ function handle_run_mode_search() {	## Not yet functional!
 	#| jq -r 'map({(.ID): {VissibleName,Type}}) | add'
 }
 function handle_run_mode_get_log() {
-	local output_file_params=
+	local output_file_params
 	if [[ "$1" ]]; then
 		output_file_params="--output $1"
+	else
+		output_file_params='--remote-name --remote-header-name'
 	fi
 	local -a curl_args=(
-		${output_file_params-'--remote-name --remote-header-name'}
+		$output_file_params
 		"$Host/log.txt"
 	)
 	run_curl "${curl_args[@]}"
