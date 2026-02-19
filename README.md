@@ -1,7 +1,7 @@
 
 ## A simple Bash script to interact with Remarkable devices' local A.P.I. via C.L.I.
 
-This script is pretty basic and I don't expect to maintain it. I've already written a more robust one that does not use their A.P.I. With that said, if anyone does want to use their A.P.I., this script should be a good place to start. I tried several others before writing it and none of them worked for me. Most are archived and unmaintained.
+This script is pretty basic and I don't expect to maintain it. I've already written [a more robust one that uses S.S.H.](https://github.com/Penguin-Guru/remarkable-ssh) instead of Remarkable's A.P.I. With that said, if anyone does want to use their A.P.I., this script should be a good place to start. I tried several others before writing it and none of them worked for me. Most are archived and unmaintained.
 
 I am not aware of any models or software versions this does not work with, but there may well be some. If you know of any, feel free to submit a pull request or file an issue about it.
 
